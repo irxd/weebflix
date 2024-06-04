@@ -8,6 +8,7 @@ import Empty from "@/components/Empty";
 import { DetailSkeleton, RecommendationSkeleton } from "@/components/Skeletons";
 import { Recommendation } from "@/types/definitions";
 import Link from "next/link";
+import { useFavoriteStore } from "@/stores/favorite";
 
 export default function Details() {
   const router = useRouter();
@@ -17,11 +18,30 @@ export default function Details() {
   const { data, error, isLoading } = useSWR(`https://api.jikan.moe/v4/anime/${id}`, fetcher);
   const { data: recData, error: recError, isLoading: recIsLoading } = useSWR(`https://api.jikan.moe/v4/anime/${id}/recommendations`, fetcher);
 
+  const addFavorite = useFavoriteStore((state) => state.addFavorite);
+  const favorites = useFavoriteStore((state) => state.favorites);
+  const removeFavorite = useFavoriteStore((state) => state.removeFavorite);
+
   const isError = data?.error || error;
   const detailData = data?.data;
 
   const isRecommendationError = recError?.error || error;
   const recommendationData = recData?.data;
+
+  const isFavorited = favorites.find((favorite) => favorite.mal_id === detailData?.mal_id);
+
+  const favoriteHandler = () => {
+    if (isFavorited) {
+      removeFavorite(detailData?.mal_id);
+    } else {
+      addFavorite({
+        mal_id: detailData?.mal_id,
+        image: detailData?.images.webp.image_url,
+        title: detailData?.title,
+        score: detailData?.score
+      });
+    }
+  }
 
   return (
     <Main>
@@ -62,14 +82,20 @@ export default function Details() {
           </Stack>
 
           <Button
-            variant="outlined"
+            variant={isFavorited ? "contained" : "outlined"}
             color="error"
             sx={{
               display: { xs: "flex", sm: "none" },
               textTransform: "none"
             }}
-            startIcon={<Add sx={{ color: "white" }} />}>
-            <Typography color="white">Add to Favorites</Typography>
+            startIcon={
+              !isFavorited && <Add sx={{ color: "white" }} />
+            }
+            onClick={favoriteHandler}
+          >
+            <Typography color="white">
+              {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
+            </Typography>
           </Button>
           <Stack direction="column" flex={1} gap={2}>
             <Box>
@@ -81,14 +107,20 @@ export default function Details() {
                   }}
                 >
                   <Button
-                    variant="outlined"
+                    variant={isFavorited ? "contained" : "outlined"}
                     color="error"
                     sx={{
                       display: { xs: "none", sm: "flex" },
                       textTransform: "none",
                     }}
-                    startIcon={<Add sx={{ color: "white" }} />}>
-                    <Typography color="white">Add to Favorites</Typography>
+                    startIcon={
+                      !isFavorited && <Add sx={{ color: "white" }} />
+                    }
+                    onClick={favoriteHandler}
+                  >
+                    <Typography color="white">
+                      {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
+                    </Typography>
                   </Button>
                 </Box>
 
@@ -116,7 +148,6 @@ export default function Details() {
               style={{ borderRadius: "8px" }}
             />
           </Box>
-
         )}
 
         {isRecommendationError && (
