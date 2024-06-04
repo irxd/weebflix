@@ -1,6 +1,10 @@
 # Weebflix
 
+![weebflix](https://github.com/irxd/weebflix/blob/main/public/logo.png?raw=true)
+
 Weebflix is an anime finder using https://docs.api.jikan.moe/.
+
+Logo generated via https://fontmeme.com/netflix-font/
 
 ## Libs
 
