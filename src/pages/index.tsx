@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
+import Card from "@/components/shared/Card";
 
 export default function Home() {
   const queryParams = useSearchParams();
@@ -40,31 +41,13 @@ export default function Home() {
           <>
             <Grid container rowSpacing={4} columnSpacing={2} marginBottom={16}>
               {listData.map((anime: AnimeList) => (
-                <Grid key={anime.mal_id} item xs={6} sm={4} md={2.4}>
-                  <Link href={`/details/${anime.mal_id}`}>
-                    <Box
-                      sx={{
-                        height: { xs: "220px", sm: "300px" },
-                        borderRadius: "8px",
-                        position: "relative",
-                        mb: 1,
-                      }}
-                    >
-                      <Image
-                        src={anime.images.webp.image_url}
-                        alt={anime.title}
-                        fill
-                        sizes="100% 100%"
-                        style={{ borderRadius: "8px", objectFit: "cover" }}
-
-                      />
-                    </Box>
-                    <Stack direction="row" justifyContent="space-between">
-                      <Typography color="white" fontSize="small">{anime.title}</Typography>
-                      <Typography color="white" fontSize="small">{anime.score}</Typography>
-                    </Stack>
-                  </Link>
-                </Grid>
+                <Card
+                  key={anime.mal_id}
+                  mal_id={anime.mal_id}
+                  image_url={anime.images.webp.image_url}
+                  title={anime.title}
+                  score={anime.score}
+                />
               ))}
             </Grid>
             <Pagination

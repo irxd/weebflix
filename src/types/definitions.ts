@@ -47,3 +47,10 @@ export interface Recommendation {
     images: Image
   }
 }
+
+export interface CardsProps {
+  mal_id: "number"
+  image_url: "string"
+  title: "string"
+  score?: "number"
+}

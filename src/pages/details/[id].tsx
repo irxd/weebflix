@@ -7,8 +7,8 @@ import useSWR from "swr";
 import Empty from "@/components/Empty";
 import { DetailSkeleton, RecommendationSkeleton } from "@/components/Skeletons";
 import { Recommendation } from "@/types/definitions";
-import Link from "next/link";
 import { useFavoriteStore } from "@/stores/favorite";
+import Card from "@/components/shared/Card";
 
 export default function Details() {
   const router = useRouter();
@@ -173,28 +173,12 @@ export default function Details() {
             <Grid container rowSpacing={4} columnSpacing={2} marginBottom={16}>
               {
                 recommendationData?.map((anime: Recommendation) => (
-                  <Grid key={anime?.entry?.mal_id} item xs={6} sm={4} md={2.4}>
-                    <Link href={`/details/${anime?.entry?.mal_id}`}>
-                      <Box
-                        sx={{
-                          height: { xs: "220px", sm: "300px" },
-                          borderRadius: "8px",
-                          position: "relative",
-                          mb: 1,
-                        }}
-                      >
-                        <Image
-                          src={anime?.entry?.images.webp.image_url}
-                          alt={anime?.entry?.title}
-                          fill
-                          sizes="100% 100%"
-                          style={{ borderRadius: "8px", objectFit: "cover" }}
-
-                        />
-                      </Box>
-                      <Typography color="white" fontSize="small">{anime?.entry?.title}</Typography>
-                    </Link>
-                  </Grid>
+                  <Card
+                    key={anime?.entry?.mal_id}
+                    mal_id={anime?.entry?.mal_id}
+                    image_url={anime?.entry?.images.webp.image_url}
+                    title={anime?.entry?.title}
+                  />
                 ))
               }
             </Grid>
