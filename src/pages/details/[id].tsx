@@ -61,83 +61,86 @@ export default function Details() {
           <DetailSkeleton />
         )}
 
-        <Stack direction={{ sm: "column", md: "row" }} gap={4} mb={8}>
-          <Stack alignItems="center">
-            <Box
-              sx={{
-                height: "450px",
-                width: { xs: "100%", sm: "300px" },
-                borderRadius: "8px",
-                position: "relative",
-                mb: 1,
-              }}
-            >
-              <Image
-                src={detailData?.images.webp.image_url}
-                alt={detailData?.title}
-                fill
-                style={{ borderRadius: "8px", objectFit: "cover" }}
-              />
-            </Box>
-          </Stack>
-
-          <Button
-            variant={isFavorited ? "contained" : "outlined"}
-            color="error"
-            sx={{
-              display: { xs: "flex", sm: "none" },
-              textTransform: "none"
-            }}
-            startIcon={
-              !isFavorited && <Add sx={{ color: "white" }} />
-            }
-            onClick={favoriteHandler}
-          >
-            <Typography color="white">
-              {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
-            </Typography>
-          </Button>
-          <Stack direction="column" flex={1} gap={2}>
-            <Box>
-              <Stack direction="row" justifyContent="space-between" gap={1}>
-                <Typography variant="h4" color="white">{detailData?.title}</Typography>
-                <Box
-                  sx={{
-                    flexShrink: 0
-                  }}
-                >
-                  <Button
-                    variant={isFavorited ? "contained" : "outlined"}
-                    color="error"
-                    sx={{
-                      display: { xs: "none", sm: "flex" },
-                      textTransform: "none",
-                    }}
-                    startIcon={
-                      !isFavorited && <Add sx={{ color: "white" }} />
-                    }
-                    onClick={favoriteHandler}
-                  >
-                    <Typography color="white">
-                      {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
-                    </Typography>
-                  </Button>
-                </Box>
-
-              </Stack>
-              <Typography variant="h6" color="white">{detailData?.year}</Typography>
-            </Box>
-
-            <Stack direction="row" gap={2}>
-              <Typography variant="h6" color="white">{detailData?.score}</Typography>
-              <Star sx={{ color: "red" }} />
+        {detailData && (
+          <Stack direction={{ sm: "column", md: "row" }} gap={4} mb={8}>
+            <Stack alignItems="center">
+              <Box
+                sx={{
+                  height: "450px",
+                  width: { xs: "100%", sm: "300px" },
+                  borderRadius: "8px",
+                  position: "relative",
+                  mb: 1,
+                }}
+              >
+                <Image
+                  src={detailData?.images.webp.image_url}
+                  alt={detailData?.title}
+                  fill
+                  style={{ borderRadius: "8px", objectFit: "cover" }}
+                />
+              </Box>
             </Stack>
 
-            <Typography color="white" align="justify" fontSize={{ xs: "small", sm: "medium" }}>
-              {detailData?.synopsis}
-            </Typography>
+            <Button
+              variant={isFavorited ? "contained" : "outlined"}
+              color="error"
+              sx={{
+                display: { xs: "flex", sm: "none" },
+                textTransform: "none"
+              }}
+              startIcon={
+                !isFavorited && <Add sx={{ color: "white" }} />
+              }
+              onClick={favoriteHandler}
+            >
+              <Typography color="white">
+                {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
+              </Typography>
+            </Button>
+            <Stack direction="column" flex={1} gap={2}>
+              <Box>
+                <Stack direction="row" justifyContent="space-between" gap={1}>
+                  <Typography variant="h4" color="white">{detailData?.title}</Typography>
+                  <Box
+                    sx={{
+                      flexShrink: 0
+                    }}
+                  >
+                    <Button
+                      variant={isFavorited ? "contained" : "outlined"}
+                      color="error"
+                      sx={{
+                        display: { xs: "none", sm: "flex" },
+                        textTransform: "none",
+                      }}
+                      startIcon={
+                        !isFavorited && <Add sx={{ color: "white" }} />
+                      }
+                      onClick={favoriteHandler}
+                    >
+                      <Typography color="white">
+                        {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
+                      </Typography>
+                    </Button>
+                  </Box>
+
+                </Stack>
+                <Typography variant="h6" color="white">{detailData?.year}</Typography>
+              </Box>
+
+              <Stack direction="row" gap={2}>
+                <Typography variant="h6" color="white">{detailData?.score}</Typography>
+                <Star sx={{ color: "red" }} />
+              </Stack>
+
+              <Typography color="white" align="justify" fontSize={{ xs: "small", sm: "medium" }}>
+                {detailData?.synopsis}
+              </Typography>
+            </Stack>
           </Stack>
-        </Stack>
+        )}
+
 
         {detailData?.trailer?.embed_url && (
           <Box mb={8}>
