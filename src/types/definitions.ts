@@ -39,3 +39,11 @@ export interface PaginationProps {
   totalPage: number;
   currentPage: number;
 }
+
+export interface Recommendation {
+  entry: {
+    mal_id: "number"
+    title: "string"
+    images: Image
+  }
+}
