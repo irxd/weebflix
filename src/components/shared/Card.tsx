@@ -1,7 +1,7 @@
+import { CardsProps } from "@/types/definitions";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { CardsProps } from "@/types/definitions";
 
 export default function Card({
   mal_id,

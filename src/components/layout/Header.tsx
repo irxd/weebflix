@@ -1,8 +1,8 @@
 import { FavoriteBorderOutlined } from "@mui/icons-material";
 import { AppBar, Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import Search from "./Search";
 import Link from "next/link";
+import Search from "./Search";
 
 export default function Header() {
   return (

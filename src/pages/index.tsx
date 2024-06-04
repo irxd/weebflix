@@ -2,13 +2,11 @@ import Empty from "@/components/Empty";
 import Pagination from "@/components/Pagination";
 import { HomepageSkeleton } from "@/components/Skeletons";
 import Main from "@/components/layout/Main";
+import Card from "@/components/shared/Card";
 import { AnimeList } from "@/types/definitions";
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
+import { Container, Grid } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
-import Card from "@/components/shared/Card";
 
 export default function Home() {
   const queryParams = useSearchParams();

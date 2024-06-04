@@ -1,17 +1,15 @@
-'use client';
-
+import { PaginationProps } from "@/types/definitions";
 import {
-  Stack,
+  InputBase,
   Pagination as MUIPagination,
+  Stack,
   Typography,
   styled,
   useMediaQuery,
-  useTheme,
-  InputBase
+  useTheme
 } from "@mui/material";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import { PaginationProps } from "@/types/definitions";
 
 const StyledPagination = styled(MUIPagination)({
   '& .MuiPaginationItem-root': {

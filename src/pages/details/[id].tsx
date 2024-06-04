@@ -1,14 +1,14 @@
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
-import { ArrowBack, Star, Add } from "@mui/icons-material";
-import Image from "next/image";
-import Main from "@/components/layout/Main";
-import { useRouter } from 'next/router'
-import useSWR from "swr";
 import Empty from "@/components/Empty";
 import { DetailSkeleton, RecommendationSkeleton } from "@/components/Skeletons";
-import { Recommendation } from "@/types/definitions";
-import { useFavoriteStore } from "@/stores/favorite";
+import Main from "@/components/layout/Main";
 import Card from "@/components/shared/Card";
+import { useFavoriteStore } from "@/stores/favorite";
+import { Recommendation } from "@/types/definitions";
+import { Add, ArrowBack, Star } from "@mui/icons-material";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import Image from "next/image";
+import { useRouter } from 'next/router';
+import useSWR from "swr";
 
 export default function Details() {
   const router = useRouter();
