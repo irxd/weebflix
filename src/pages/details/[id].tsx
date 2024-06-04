@@ -27,6 +27,7 @@ export default function Details() {
 
   const isRecommendationError = recError?.error || error;
   const recommendationData = recData?.data;
+  const isRecDataExist = recommendationData?.length > 0;
 
   const isFavorited = favorites.find((favorite) => favorite.mal_id === detailData?.mal_id);
 
@@ -53,9 +54,16 @@ export default function Details() {
           />
         )}
 
-        <Box mb={4}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          mb={4}
+          gap={1}
+          onClick={() => router.back()}
+        >
           <ArrowBack sx={{ color: "white" }} />
-        </Box>
+          <Typography color="white" variant="h6">Back</Typography>
+        </Stack>
 
         {isLoading && (
           <DetailSkeleton />
@@ -164,7 +172,7 @@ export default function Details() {
           <RecommendationSkeleton />
         )}
 
-        {detailData && (
+        {isRecDataExist && (
           <>
             <Typography
               variant="h6"
