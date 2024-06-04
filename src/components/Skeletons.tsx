@@ -172,7 +172,13 @@ export function DetailSkeleton() {
           mb: 8
         }}
       />
+    </>
+  );
+}
 
+export function RecommendationSkeleton() {
+  return (
+    <>
       <Skeleton
         animation="wave"
         variant="rectangular"
