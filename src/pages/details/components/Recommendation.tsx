@@ -1,36 +1,35 @@
 import Card from "@/components/Card";
 import Empty from "@/components/Empty";
 import { RecommendationSkeleton } from "@/components/Skeletons";
+import { useAnimeRecommendation } from "@/hooks/useAnime";
 import { RecommendationList } from "@/types/definitions";
 import { Grid, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import useSWR from "swr";
 
 export default function Recommendation() {
   const router = useRouter();
   const id = router.query.id;
 
-  const fetcher = (url: string) => fetch(url).then(res => res.json());
-  const { data: recData, error: recError, isLoading: recIsLoading } = useSWR(`https://api.jikan.moe/v4/anime/${id}/recommendations`, fetcher);
+  const { data, error, isLoading } = useAnimeRecommendation(id as string);
 
-  const recommendationData = recData?.data;
-  const isRecommendationError = recData?.error || recError;
-  const isRecDataExist = recommendationData?.length > 0;
+  const recommendationData = data?.data;
+  const isError = data?.error || error;
+  const isDataExist = recommendationData?.length > 0;
 
   return (
     <>
-      {isRecommendationError && (
+      {isError && (
         <Empty
           message="Recommendation failed to load :("
           subMessage="Please check back later"
         />
       )}
 
-      {recIsLoading && (
+      {isLoading && (
         <RecommendationSkeleton />
       )}
 
-      {isRecDataExist && (
+      {isDataExist && (
         <>
           <Typography
             variant="h6"

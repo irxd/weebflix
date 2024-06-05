@@ -3,18 +3,16 @@ import Empty from "@/components/Empty";
 import Pagination from "@/components/Pagination";
 import { HomepageSkeleton } from "@/components/Skeletons";
 import Main from "@/components/layout/Main";
+import { useAnimeList } from "@/hooks/useAnime";
 import { AnimeList } from "@/types/definitions";
 import { Container, Grid } from "@mui/material";
 import { useSearchParams } from "next/navigation";
-import useSWR from "swr";
 
 export default function Home() {
   const queryParams = useSearchParams();
   const page = queryParams.get('page') || 1;
   const query = queryParams.get('query') || "";
-
-  const fetcher = (url: string) => fetch(url).then(res => res.json());
-  const { data, error, isLoading } = useSWR(`https://api.jikan.moe/v4/anime?page=${page}&q=${query}`, fetcher);
+  const { data, error, isLoading } = useAnimeList(Number(page), query);
 
   const isError = data?.error || error;
   const listData = data?.data;

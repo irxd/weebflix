@@ -1,19 +1,17 @@
 import Empty from "@/components/Empty";
 import { DetailSkeleton } from "@/components/Skeletons";
+import { useAnimeDetail } from "@/hooks/useAnime";
 import { useFavoriteStore } from "@/stores/favorite";
 import { Add } from "@mui/icons-material";
 import { Box, Button, Rating, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from 'next/router';
-import useSWR from "swr";
 
 export default function Overview() {
   const router = useRouter();
-  const id = router.query.id;
+  const id = router?.query?.id;
 
-  const fetcher = (url: string) => fetch(url).then(res => res.json());
-  const { data, error, isLoading } = useSWR(`https://api.jikan.moe/v4/anime/${id}`, fetcher);
-
+  const { data, error, isLoading } = useAnimeDetail(id as string);
   const addFavorite = useFavoriteStore((state) => state.addFavorite);
   const favorites = useFavoriteStore((state) => state.favorites);
   const removeFavorite = useFavoriteStore((state) => state.removeFavorite);
