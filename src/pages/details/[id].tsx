@@ -1,4 +1,5 @@
 import Main from "@/components/layout/Main";
+import { useAnimeDetail } from "@/hooks/useAnime";
 import { ArrowBack } from "@mui/icons-material";
 import { Container, Stack, Typography } from "@mui/material";
 import { useRouter } from 'next/router';
@@ -7,6 +8,9 @@ import Recommendation from "./components/Recommendation";
 
 export default function Details() {
   const router = useRouter();
+  const id = router?.query?.id;
+
+  const { data, error, isLoading } = useAnimeDetail(id as string);
 
   return (
     <Main>
@@ -22,7 +26,11 @@ export default function Details() {
           <Typography color="white" variant="h6">Back</Typography>
         </Stack>
 
-        <Overview />
+        <Overview
+          data={data}
+          error={error}
+          isLoading={isLoading}
+        />
         <Recommendation />
       </Container>
     </Main>

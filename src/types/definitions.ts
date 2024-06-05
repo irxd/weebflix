@@ -53,3 +53,9 @@ export interface CardsProps {
   title: string;
   score?: number;
 }
+
+export interface OverviewProps {
+  data: any;
+  error: any;
+  isLoading: boolean;
+}

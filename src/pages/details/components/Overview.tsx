@@ -1,17 +1,12 @@
 import Empty from "@/components/Empty";
 import { DetailSkeleton } from "@/components/Skeletons";
-import { useAnimeDetail } from "@/hooks/useAnime";
 import { useFavoriteStore } from "@/stores/favorite";
+import { OverviewProps } from "@/types/definitions";
 import { Add } from "@mui/icons-material";
 import { Box, Button, Rating, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from 'next/router';
 
-export default function Overview() {
-  const router = useRouter();
-  const id = router?.query?.id;
-
-  const { data, error, isLoading } = useAnimeDetail(id as string);
+export default function Overview({ data, error, isLoading }: OverviewProps) {
   const addFavorite = useFavoriteStore((state) => state.addFavorite);
   const favorites = useFavoriteStore((state) => state.favorites);
   const removeFavorite = useFavoriteStore((state) => state.removeFavorite);
@@ -137,6 +132,7 @@ export default function Overview() {
       {detailData?.trailer?.embed_url && (
         <Box mb={8}>
           <iframe
+            title="trailer"
             width="100%"
             height="400"
             src={detailData?.trailer?.embed_url}
