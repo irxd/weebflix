@@ -49,12 +49,15 @@ export default function Pagination({ totalPage, currentPage }: PaginationProps) 
 
   const handleGoToPage = useDebouncedCallback((page) => {
     if (page) {
-      const params = new URLSearchParams(searchParams);
-      if (page) {
-        params.set('page', page);
-      } else {
-        params.delete('page');
+      // Ensure the page number is within the range
+      let pageNumber = Math.abs(page);
+      if (pageNumber > totalPage) {
+        pageNumber = totalPage;
       }
+
+      const params = new URLSearchParams(searchParams);
+      params.set('page', String(pageNumber));
+
       replace(`/?${params.toString()}`);
     }
 
