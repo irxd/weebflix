@@ -80,7 +80,7 @@ export function DetailSkeleton() {
             sx={{
               backgroundColor: 'grey.600',
               borderRadius: "8px",
-              width: "300px",
+              width: { xs: "100%", sm: "300px" },
               height: "450px"
             }}
           />

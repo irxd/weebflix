@@ -69,6 +69,13 @@ export default function Details() {
           <DetailSkeleton />
         )}
 
+        {!detailData && !isLoading && (
+          <Empty
+            message="No data found"
+            subMessage="Please try again later"
+          />
+        )}
+
         {detailData && (
           <Stack direction={{ sm: "column", md: "row" }} gap={4} mb={8}>
             <Stack alignItems="center">
@@ -82,7 +89,7 @@ export default function Details() {
                 }}
               >
                 <Image
-                  src={detailData?.images.webp.image_url}
+                  src={detailData?.images.webp.large_image_url}
                   alt={detailData?.title}
                   fill
                   style={{ borderRadius: "8px", objectFit: "cover" }}
@@ -148,7 +155,6 @@ export default function Details() {
             </Stack>
           </Stack>
         )}
-
 
         {detailData?.trailer?.embed_url && (
           <Box mb={8}>
