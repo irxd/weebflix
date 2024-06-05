@@ -38,12 +38,18 @@ export default function Search() {
       }}
     >
       <InputBase
-        sx={{ color: "white" }}
+        sx={{
+          color: "white",
+          "input[type='search']::-webkit-search-cancel-button": {
+            filter: "invert(100%) brightness(200%) contrast(200%)",
+          },
+        }}
         startAdornment={<SearchOutlined />}
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
         defaultValue={searchParams.get('query')?.toString()}
+        type="search"
       />
     </Stack>
   );
