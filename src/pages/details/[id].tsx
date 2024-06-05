@@ -162,7 +162,7 @@ export default function Details() {
               width="100%"
               height="400"
               src={detailData?.trailer?.embed_url}
-              style={{ borderRadius: "8px" }}
+              style={{ borderRadius: "8px", border: "none" }}
             />
           </Box>
         )}
