@@ -27,15 +27,11 @@ describe("Card component", () => {
     const title = "Attack on Titan";
     const image_url = "https://cdn.myanimelist.net/images/anime/10/47347.webp";
 
-    const { getByTestId } = render(
+    const { queryByTestId } = render(
       <Card mal_id={mal_id} title={title} image_url={image_url} />
     );
 
-    try {
-      expect(getByTestId("score")).not.toBeInTheDocument();
-    } catch (error) {
-      expect(error).toBeTruthy();
-    }
+    expect(queryByTestId("score")).not.toBeInTheDocument();
   });
 });
 
