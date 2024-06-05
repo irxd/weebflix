@@ -35,6 +35,13 @@ export default function Home() {
           <HomepageSkeleton />
         )}
 
+        {!isDataExist && (
+          <Empty
+            message="No data found"
+            subMessage="Please try again with different keyword"
+          />
+        )}
+
         {isDataExist && (
           <>
             <Grid container rowSpacing={4} columnSpacing={2} marginBottom={16}>
