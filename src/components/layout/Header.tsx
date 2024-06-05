@@ -16,10 +16,10 @@ export default function Header() {
         }}>
         <Link href="/">
           <Box display={{ xs: "none", sm: "block" }}>
-            <Image src="/logo.png" alt="logo" width={120} height={36} />
+            <Image src="/logo.png" alt="logo" width={120} height={36} priority />
           </Box>
           <Box display={{ xs: "block", sm: "none" }} mr={2}>
-            <Image src="/logo-mobile.png" alt="logo" width={26} height={36} />
+            <Image src="/logo-mobile.png" alt="logo" width={26} height={36} priority />
           </Box>
         </Link>
 
