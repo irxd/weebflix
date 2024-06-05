@@ -35,7 +35,7 @@ export default function Home() {
           <HomepageSkeleton />
         )}
 
-        {!isDataExist && (
+        {(!isDataExist && !isError) && (
           <Empty
             message="No data found"
             subMessage="Please try again with different keyword"
