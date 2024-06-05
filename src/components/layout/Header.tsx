@@ -27,7 +27,7 @@ export default function Header() {
           <Search />
         </Box>
 
-        <Stack direction="row" gap={2} alignItems="center">
+        <Stack direction="row" gap={2} alignItems="center" ml={2}>
           <Box display={{ xs: "none", sm: "block" }}>
             <Search />
           </Box>
