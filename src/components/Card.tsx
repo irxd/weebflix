@@ -33,7 +33,7 @@ export default function Card({
         <Stack direction="row" justifyContent="space-between">
           <Typography color="white" fontSize="small">{title}</Typography>
           {score && (
-            <Stack direction="row" gap={0.5} pl={1}>
+            <Stack direction="row" gap={0.5} pl={1} data-testid="score">
               <Typography color="white" fontSize="small">{score}</Typography>
               <Star sx={{ color: "white", fontSize: "12px" }} />
             </Stack>

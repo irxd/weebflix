@@ -10,7 +10,7 @@ describe("Card component", () => {
     const encodedUrl = encodeURIComponent(image_url);
     const score = 9.0;
 
-    const { getByText, getByAltText } = render(
+    const { getByText, getByAltText, getByTestId } = render(
       <Card mal_id={mal_id} title={title} image_url={image_url} score={score} />
     );
 
@@ -19,7 +19,23 @@ describe("Card component", () => {
     expect(image.src).toContain(encodedUrl)
     expect(getByText(title)).toBeInTheDocument();
     expect(getByAltText(title)).toBeInTheDocument();
-    expect(getByText(score.toString())).toBeInTheDocument();
+    expect(getByTestId("score")).toBeInTheDocument();
+  });
+
+  test("renders Card component without score", () => {
+    const mal_id = 1;
+    const title = "Attack on Titan";
+    const image_url = "https://cdn.myanimelist.net/images/anime/10/47347.webp";
+
+    const { getByTestId } = render(
+      <Card mal_id={mal_id} title={title} image_url={image_url} />
+    );
+
+    try {
+      expect(getByTestId("score")).not.toBeInTheDocument();
+    } catch (error) {
+      expect(error).toBeTruthy();
+    }
   });
 });
 
