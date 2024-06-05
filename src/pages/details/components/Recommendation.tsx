@@ -1,16 +1,12 @@
 import Card from "@/components/Card";
 import Empty from "@/components/Empty";
 import { RecommendationSkeleton } from "@/components/Skeletons";
-import { useAnimeRecommendation } from "@/hooks/useAnime";
-import { RecommendationList } from "@/types/definitions";
+import { RecommendationList, RecommendationProps } from "@/types/definitions";
 import { Grid, Typography } from "@mui/material";
-import { useRouter } from "next/router";
 
-export default function Recommendation() {
-  const router = useRouter();
-  const id = router.query.id;
-
-  const { data, error, isLoading } = useAnimeRecommendation(id as string);
+export default function Recommendation({
+  data, error, isLoading
+}: RecommendationProps) {
 
   const recommendationData = data?.data;
   const isError = data?.error || error;
