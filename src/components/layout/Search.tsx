@@ -1,6 +1,7 @@
 import { SearchOutlined } from "@mui/icons-material";
 import { InputBase, Stack } from "@mui/material";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useDebouncedCallback } from "use-debounce";
 
 export default function Search() {

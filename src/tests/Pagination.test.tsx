@@ -3,17 +3,20 @@ import { render } from "@testing-library/react";
 import Pagination from "../components/Pagination";
 
 jest.mock('next/navigation', () => ({
-  useRouter() {
-    return {
-      push: () => jest.fn(),
-      replace: () => jest.fn(),
-    };
-  },
   usePathname() {
     return '/';
   },
   useSearchParams() {
     return { page: 1 }
+  },
+}));
+
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      push: () => jest.fn(),
+      replace: () => jest.fn(),
+    };
   },
 }));
 

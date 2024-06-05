@@ -3,12 +3,6 @@ import { fireEvent, render } from "@testing-library/react";
 import Search from "../components/layout/Search";
 
 jest.mock('next/navigation', () => ({
-  useRouter() {
-    return {
-      push: () => jest.fn(),
-      replace: () => jest.fn(),
-    };
-  },
   usePathname() {
     return '/';
   },
@@ -17,6 +11,15 @@ jest.mock('next/navigation', () => ({
       page: 1,
       get: () => jest.fn(),
     }
+  },
+}));
+
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      push: () => jest.fn(),
+      replace: () => jest.fn(),
+    };
   },
 }));
 

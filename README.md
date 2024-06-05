@@ -21,6 +21,7 @@ Logo generated via https://fontmeme.com/netflix-font/
     ├── ...
     ├── src
     │   ├── components          # Shared components
+    │   ├── hooks               # Hooks files
     │   ├── pages               # Pages
     │   ├── stores              # Store files
     │   ├── styles              # Style file

@@ -8,7 +8,8 @@ import {
   useMediaQuery,
   useTheme
 } from "@mui/material";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useDebouncedCallback } from "use-debounce";
 
 const StyledPagination = styled(MUIPagination)({
