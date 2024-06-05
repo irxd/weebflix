@@ -29,7 +29,7 @@ export interface AnimeDetail {
   title: string;
   images: Image;
   score: number;
-  trailer: Trailer;
+  trailer?: Trailer;
   year: number;
   synopsis: string;
 }
@@ -55,7 +55,19 @@ export interface CardsProps {
 }
 
 export interface OverviewProps {
-  data: any;
+  data: {
+    data: AnimeDetail;
+    error: string;
+  };
+  error: any;
+  isLoading: boolean;
+}
+
+export interface RecommendationProps {
+  data: {
+    data: RecommendationList[];
+    error: string;
+  };
   error: any;
   isLoading: boolean;
 }

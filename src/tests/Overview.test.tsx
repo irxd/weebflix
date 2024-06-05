@@ -5,10 +5,18 @@ import { render } from "@testing-library/react";
 const mockData = {
   mal_id: 1,
   images: {
+    jpg: {
+      image_url: "https://cdn.myanimelist.net/images/anime/1993/113122.jpg",
+      small_image_url: "https://cdn.myanimelist.net/images/anime/1993/113122s.jpg",
+      large_image_url: "https://cdn.myanimelist.net/images/anime/1993/113122l.jpg"
+    },
     webp: {
-      large_image_url: "https://cdn.myanimelist.net/images/anime/1993/113122l.webp"
+      image_url: "https://cdn.myanimelist.net/images/anime/1993/113122.jpg",
+      small_image_url: "https://cdn.myanimelist.net/images/anime/1993/113122s.jpg",
+      large_image_url: "https://cdn.myanimelist.net/images/anime/1993/113122l.jpg"
     }
   },
+  year: 1995,
   title: "Evangelion",
   score: 10,
   synopsis: "In the year 2015, more than a decade ...",
@@ -20,9 +28,12 @@ describe("Overview component", () => {
       data: {
         ...mockData,
         trailer: {
-          embed_url: "https://www.youtube.com/embed/eI8aUqsCovo?enablejsapi=1&wmode=opaque&autoplay=1"
-        }
-      }
+          embed_url: "https://www.youtube.com/embed/eI8aUqsCovo?enablejsapi=1&wmode=opaque&autoplay=1",
+          url: "https://www.youtube.com/watch?v=eI8aUqsCovo",
+          youtube_id: "eI8aUqsCovo",
+        },
+      },
+      error: "",
     }
     const encodedUrl = encodeURIComponent(data.data.images.webp.large_image_url);
     const error = null;
@@ -46,7 +57,8 @@ describe("Overview component", () => {
     const isLoading = false;
 
     const data = {
-      data: mockData
+      data: mockData,
+      error: "",
     }
 
     const { queryByTitle } = render(
