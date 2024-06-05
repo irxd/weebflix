@@ -1,6 +1,6 @@
+import Card from "@/components/Card";
 import Empty from "@/components/Empty";
 import Main from "@/components/layout/Main";
-import Card from "@/components/shared/Card";
 import { useFavoriteStore } from "@/stores/favorite";
 import { Button, Container, Grid, Typography } from "@mui/material";
 import Link from "next/link";

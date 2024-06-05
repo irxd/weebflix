@@ -1,4 +1,5 @@
 import { CardsProps } from "@/types/definitions";
+import { Star } from "@mui/icons-material";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +32,12 @@ export default function Card({
         </Box>
         <Stack direction="row" justifyContent="space-between">
           <Typography color="white" fontSize="small">{title}</Typography>
-          <Typography color="white" fontSize="small">{score}</Typography>
+          {score && (
+            <Stack direction="row" gap={0.5} pl={1}>
+              <Typography color="white" fontSize="small">{score}</Typography>
+              <Star sx={{ color: "white", fontSize: "12px" }} />
+            </Stack>
+          )}
         </Stack>
       </Link>
     </Grid>

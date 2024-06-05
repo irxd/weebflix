@@ -1,8 +1,8 @@
+import Card from "@/components/Card";
 import Empty from "@/components/Empty";
 import Pagination from "@/components/Pagination";
 import { HomepageSkeleton } from "@/components/Skeletons";
 import Main from "@/components/layout/Main";
-import Card from "@/components/shared/Card";
 import { AnimeList } from "@/types/definitions";
 import { Container, Grid } from "@mui/material";
 import { useSearchParams } from "next/navigation";

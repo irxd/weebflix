@@ -1,11 +1,11 @@
+import Card from "@/components/Card";
 import Empty from "@/components/Empty";
 import { DetailSkeleton, RecommendationSkeleton } from "@/components/Skeletons";
 import Main from "@/components/layout/Main";
-import Card from "@/components/shared/Card";
 import { useFavoriteStore } from "@/stores/favorite";
 import { Recommendation } from "@/types/definitions";
-import { Add, ArrowBack, Star } from "@mui/icons-material";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Add, ArrowBack } from "@mui/icons-material";
+import { Box, Button, Container, Grid, Rating, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from 'next/router';
 import useSWR from "swr";
@@ -146,7 +146,7 @@ export default function Details() {
 
               <Stack direction="row" gap={2}>
                 <Typography variant="h6" color="white">{detailData?.score}</Typography>
-                <Star sx={{ color: "red" }} />
+                <Rating name="read-only" value={detailData?.score / 2} precision={0.5} readOnly sx={{ color: "red" }} />
               </Stack>
 
               <Typography color="white" align="justify" fontSize={{ xs: "small", sm: "medium" }}>
