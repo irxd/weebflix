@@ -2,6 +2,7 @@ import Main from "@/components/layout/Main";
 import { useAnimeDetail, useAnimeRecommendation } from "@/hooks/useAnime";
 import { ArrowBack } from "@mui/icons-material";
 import { Container, Stack, Typography } from "@mui/material";
+import Head from "next/head";
 import { useRouter } from 'next/router';
 import Overview from "./components/Overview";
 import Recommendation from "./components/Recommendation";
@@ -15,6 +16,10 @@ export default function Details() {
 
   return (
     <Main>
+      <Head>
+        <title>Weeblix - {data?.data?.title}</title>
+      </Head>
+
       <Container>
         <Stack
           direction="row"

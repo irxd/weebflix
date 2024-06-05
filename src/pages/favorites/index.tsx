@@ -3,6 +3,7 @@ import Empty from "@/components/Empty";
 import Main from "@/components/layout/Main";
 import { useFavoriteStore } from "@/stores/favorite";
 import { Button, Container, Grid, Typography } from "@mui/material";
+import Head from "next/head";
 import Link from "next/link";
 
 export default function Favorites() {
@@ -11,6 +12,10 @@ export default function Favorites() {
 
   return (
     <Main>
+      <Head>
+        <title>Weeblix - My Favorites</title>
+      </Head>
+
       <Container>
         {hadFavorites && (
           <>

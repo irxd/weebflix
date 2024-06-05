@@ -6,6 +6,7 @@ import Main from "@/components/layout/Main";
 import { useAnimeList } from "@/hooks/useAnime";
 import { AnimeList } from "@/types/definitions";
 import { Container, Grid } from "@mui/material";
+import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 
 export default function Home() {
@@ -21,6 +22,10 @@ export default function Home() {
 
   return (
     <Main>
+      <Head>
+        <title>Weeblix</title>
+      </Head>
+
       <Container>
         {isError && (
           <Empty
