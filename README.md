@@ -12,6 +12,21 @@ Logo generated via https://fontmeme.com/netflix-font/
 - Material UI
 - Zustand
 - SWR
+- Jest
+- React Testing Library
+
+## Structure
+
+    .
+    ├── ...
+    ├── src
+    │   ├── components          # Shared components
+    │   ├── pages               # Pages
+    │   ├── stores              # Store files
+    │   ├── styles              # Style file
+    │   ├── tests               # Unit tests
+    │   └── types               # Type definitions
+    └── ...
 
 ## Features
 
@@ -26,13 +41,13 @@ Logo generated via https://fontmeme.com/netflix-font/
 First, run the development server:
 
 ```bash
-npm  run  dev
+npm run dev
 # or
-yarn  dev
+yarn dev
 # or
-pnpm  dev
+pnpm dev
 # or
-bun  dev
+bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
